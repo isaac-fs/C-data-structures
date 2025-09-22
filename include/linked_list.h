@@ -11,6 +11,7 @@ typedef struct linked_list {
   int length;
   void (*append)(struct linked_list** linked_list, node** node);
   void (*destroy)(struct linked_list** linked_list);
+  void (*print)(struct linked_list* linked_list);
 } linked_list;
 
 linked_list *create_linked_list(node** node);

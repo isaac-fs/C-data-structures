@@ -28,7 +28,9 @@ void test_linked_list() {
   printf("Linked list head: %s\n", linked_list->head->value);
   printf("Linked list tail: %s\n", linked_list->tail->value);
   printf("Linked list length: %d\n", linked_list->length);
-  printf("Destroying linked list...\n");
+  printf("- Printing linked list...\n");
+  linked_list->print(linked_list);
+  printf("- Destroying linked list...\n");
   linked_list->destroy(&linked_list);
   printf("linked list: %p\n", linked_list);
   printf("\n");
