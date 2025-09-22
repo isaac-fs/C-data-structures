@@ -2,8 +2,8 @@
 
 #include "linked_list.h"
 
-static void append(linked_list* linked_list, node* node);
 static void destroy(linked_list **linked_list);
+static void append(linked_list **linked_list, node **node);
 
 linked_list *create_linked_list(node **node_ptr) {
   linked_list *linked_list =
@@ -32,8 +32,11 @@ static void destroy(linked_list **linked_list_ptr) {
   return;
 }
 
-static void append(linked_list* linked_list, node* node) {
-  linked_list->tail->next = node;
-  linked_list->tail = node;
+static void append(linked_list **linked_list_ptr, node **node_ptr) {
+  struct linked_list *list = *linked_list_ptr;
+  struct node *node = *node_ptr;
+  list->tail->next = node;
+  list->tail = node;
+  list->length++;
   return;
 }

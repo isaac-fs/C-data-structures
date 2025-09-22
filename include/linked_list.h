@@ -9,7 +9,7 @@ typedef struct linked_list {
   node *head;
   node *tail;
   int length;
-  void (*append)(struct linked_list* linked_list, node* node);
+  void (*append)(struct linked_list** linked_list, node** node);
   void (*destroy)(struct linked_list** linked_list);
 } linked_list;
 
