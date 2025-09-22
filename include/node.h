@@ -4,7 +4,7 @@
 typedef struct node {
   char* value;
   struct node* next;
-  void (*destroy)(struct node* node);
+  void (*destroy)(struct node** node);
 } node;
 
 node* create_node(char* value);
