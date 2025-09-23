@@ -28,7 +28,7 @@ static void destroy(linked_list **linked_list_ptr) {
     linked_list->head->destroy(&linked_list->head);
     linked_list->head = new_head;
   }
-  // Crear the linked list
+  // Clear the linked list
   linked_list->tail = NULL;
   free(linked_list);
   *linked_list_ptr = NULL;
@@ -44,7 +44,7 @@ static void append(linked_list **linked_list_ptr, node **node_ptr) {
   return;
 }
 
-void print(linked_list *linked_list) {
+static void print(linked_list *linked_list) {
   node *current_node = linked_list->head;
   for (int i = 0; current_node; i++) {
     printf("List[%d] = %s\n", i, current_node->value);
