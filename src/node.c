@@ -5,7 +5,7 @@
 
 static void destroy(struct node** node_ptr);
 
-node* create_node(char* value) {
+node* create_node(const char* value) {
   if(!value) {
     abort();
   }
