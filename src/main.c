@@ -1,42 +1,60 @@
 #include <stdio.h>
 
+#include "hash_table.h"
 #include "linked_list.h"
 #include "node.h"
 
 void test_node() {
-  printf("- Testing node implementation:\n");
+  printf("Testing node implementation\n");
   node *node = create_node("hello");
-  printf("- Created new node with value %s\n", node->value);
-  printf("Node next: %p\n", node->next);
-  printf("- Destroying node...\n");
+  printf("\tCreated new node with value %s\n", node->value);
+  printf("\tNode next: %p\n", node->next);
+  printf("\tDestroying node...\n");
   node->destroy(&node);
-  printf("Node: %p\n", node);
-  printf("\n");
+  printf("\tNode: %p\n", node);
 }
 
 void test_linked_list() {
-  printf("- Testing linked list implementation:\n");
+  printf("Testing linked list implementation\n");
   node *node = create_node("hello");
   linked_list *linked_list = create_linked_list(&node);
-  printf("- Created new linked list\n");
-  printf("Linked list head: %s\n", linked_list->head->value);
-  printf("Linked list tail: %s\n", linked_list->tail->value);
-  printf("Linked list length: %d\n", linked_list->length);
-  printf("- Appeding node to list...\n");
+  printf("\tCreated new linked list\n");
+  printf("\tLinked list head: %s\n", linked_list->head->value);
+  printf("\tLinked list tail: %s\n", linked_list->tail->value);
+  printf("\tLinked list length: %d\n", linked_list->length);
+  printf("\tAppeding node to list...\n");
   struct node *node2 = create_node("world");
   linked_list->append(&linked_list, &node2);
-  printf("Linked list head: %s\n", linked_list->head->value);
-  printf("Linked list tail: %s\n", linked_list->tail->value);
-  printf("Linked list length: %d\n", linked_list->length);
-  printf("- Printing linked list...\n");
+  printf("\tLinked list head: %s\n", linked_list->head->value);
+  printf("\tLinked list tail: %s\n", linked_list->tail->value);
+  printf("\tLinked list length: %d\n", linked_list->length);
+  printf("\tPrinting linked list...\n");
   linked_list->print(linked_list);
-  printf("- Destroying linked list...\n");
+  printf("\tDestroying linked list...\n");
   linked_list->destroy(&linked_list);
-  printf("Linked list: %p\n", linked_list);
-  printf("\n");
+  printf("\tLinked list: %p\n", linked_list);
+}
+
+void test_hash_table() {
+  printf("Testing hast table implementation\n");
+  char *str = "hello";
+  hash_table *hash_table = create_hash_table();
+  printf("\tCreated a new hash table\n");
+  printf("\tAdding value %s\n", str);
+  ht_key key = hash_table->insert(&hash_table, str);
+  printf("\tGot key %u\n", key);
+  char *out = hash_table->extract(&hash_table, key);
+  printf("\tGot value %s using key %u\n", out, key);
+  printf("\tDestroying hash table\n");
+  hash_table->destroy(&hash_table);
+  printf("\tHash table %p\n", hash_table);
 }
 
 int main() {
+  printf("\n");
   test_node();
+  printf("\n");
   test_linked_list();
+  printf("\n");
+  test_hash_table();
 };
