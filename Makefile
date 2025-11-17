@@ -15,13 +15,14 @@ SLIB = $(LIB_DIR)/ds_lib.a
 DLIB = $(LIB_DIR)/ds_lib.so
 TARGET = testbench.out
 
-all: $(DLIB) $(SLIB) $(TARGET)
+# all: $(DLIB) $(SLIB) $(TARGET)
+all: $(SLIB) $(TARGET)
 
 .PHONY: all
 
-$(DLIB): $(OBJS)
-	@mkdir -p $(LIB_DIR)
-	$(CC) -shared -fPIC $^ -o $@
+# $(DLIB): $(OBJS)
+# 	@mkdir -p $(LIB_DIR)
+# 	$(CC) -shared -fPIC $^ -o $@
 
 $(SLIB): $(OBJS)
 	@mkdir -p $(LIB_DIR)
