@@ -38,3 +38,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	$(RM) -r $(OBJ_DIR) $(LIB_DIR) $(TARGET)
+
+check: $(TARGET)
+	valgrind --tool=memcheck --leak-check=full ./$^
