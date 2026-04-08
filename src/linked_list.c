@@ -47,7 +47,7 @@ static void append(linked_list **linked_list_ptr, node **node_ptr) {
 static void print(linked_list *linked_list) {
   node *current_node = linked_list->head;
   for (int i = 0; current_node; i++) {
-    printf("List[%d] = %s\n", i, current_node->value);
+    printf("\tList[%d] = %s\n", i, current_node->value);
     current_node = current_node->next;
   }
   return;
