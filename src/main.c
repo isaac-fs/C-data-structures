@@ -16,13 +16,11 @@ void test_node() {
 
 void test_linked_list() {
   printf("Testing linked list implementation\n");
-  node *node = create_node("hello");
-  linked_list *linked_list = create_linked_list(&node);
+  linked_list *linked_list = create_linked_list();
   printf("\tCreated new linked list\n");
   printf("\tLinked list length: %d\n", linked_list->length);
   printf("\tAppeding node to list...\n");
-  struct node *node2 = create_node("world");
-  linked_list->append(&linked_list, &node2);
+  linked_list->append(&linked_list, "hello");
   printf("\tLinked list head: %s\n", linked_list->head->value);
   printf("\tLinked list tail: %s\n", linked_list->tail->value);
   printf("\tLinked list length: %d\n", linked_list->length);
