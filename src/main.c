@@ -19,8 +19,13 @@ void test_linked_list() {
   linked_list *linked_list = create_linked_list();
   printf("\tCreated new linked list\n");
   printf("\tLinked list length: %d\n", linked_list->length);
-  printf("\tAppeding node to list...\n");
+  printf("\tAppeding nodes to list...\n");
   linked_list->append(&linked_list, "hello");
+  linked_list->append(&linked_list, "world");
+  linked_list->append(&linked_list, "this");
+  linked_list->append(&linked_list, "is");
+  linked_list->append(&linked_list, "a");
+  linked_list->append(&linked_list, "test");
   printf("\tLinked list head: %s\n", linked_list->head->value);
   printf("\tLinked list tail: %s\n", linked_list->tail->value);
   printf("\tLinked list length: %d\n", linked_list->length);
