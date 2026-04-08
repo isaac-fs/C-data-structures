@@ -38,14 +38,17 @@ void test_linked_list() {
 
 void test_hash_table() {
   printf("Testing hast table implementation\n");
-  char *str = "hello";
+  char *strings[] = {"hello", "olleh", "world", "world"};
   hash_table *hash_table = create_hash_table();
   printf("\tCreated a new hash table\n");
-  printf("\tAdding value %s\n", str);
-  ht_key key = hash_table->insert(&hash_table, str);
-  printf("\tGot key %u\n", key);
-  char *out = hash_table->extract(&hash_table, key);
-  printf("\tGot value %s using key %u\n", out, key);
+  for (size_t i = 0; i < sizeof(strings) / sizeof(strings[0]); i++) {
+    printf("\tAdding value %s\n", strings[i]);
+    ht_key key = hash_table->insert(&hash_table, strings[i]);
+    printf("\tGot key %u\n", key);
+    linked_list *out = hash_table->extract(&hash_table, key);
+    printf("\tValues for key %u:\n", key);
+    out->print(out);
+  }
   printf("\tDestroying hash table\n");
   hash_table->destroy(&hash_table);
   printf("\tHash table %p\n", hash_table);
