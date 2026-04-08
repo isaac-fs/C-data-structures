@@ -37,8 +37,15 @@ static void destroy(linked_list **linked_list_ptr) {
 static void append(linked_list **linked_list_ptr, node **node_ptr) {
   struct linked_list *list = *linked_list_ptr;
   struct node *node = *node_ptr;
-  list->tail->next = node;
-  list->tail = node;
+  // If this is the first node, add it as head
+  // The tail should be the same as the head at this point
+  if (!list->head && !list->length) {
+    list->head = node;
+    list->tail = node;
+  } else {
+    list->tail->next = node;
+    list->tail = node;
+  }
   list->length++;
   return;
 }
