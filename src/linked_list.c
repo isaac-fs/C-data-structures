@@ -7,13 +7,12 @@ static void destroy(linked_list **linked_list);
 static void append(linked_list **linked_list, node **node);
 static void print(linked_list *linked_list);
 
-linked_list *create_linked_list(node **node_ptr) {
+linked_list *create_linked_list() {
   linked_list *linked_list =
       (struct linked_list *)malloc(sizeof(struct linked_list));
-  struct node *node = *node_ptr;
-  linked_list->head = node;
-  linked_list->tail = node;
-  linked_list->length = 1;
+  linked_list->head = NULL;
+  linked_list->tail = NULL;
+  linked_list->length = 0;
   linked_list->destroy = destroy;
   linked_list->append = append;
   linked_list->print = print;

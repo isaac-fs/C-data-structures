@@ -19,8 +19,6 @@ void test_linked_list() {
   node *node = create_node("hello");
   linked_list *linked_list = create_linked_list(&node);
   printf("\tCreated new linked list\n");
-  printf("\tLinked list head: %s\n", linked_list->head->value);
-  printf("\tLinked list tail: %s\n", linked_list->tail->value);
   printf("\tLinked list length: %d\n", linked_list->length);
   printf("\tAppeding node to list...\n");
   struct node *node2 = create_node("world");
