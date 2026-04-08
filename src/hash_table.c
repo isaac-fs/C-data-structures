@@ -38,8 +38,9 @@ ht_key insert(hash_table **hash_table_ptr, char *value) {
   hash_table *hash_table = *hash_table_ptr;
   size_t size = strlen(value);
   ht_key key = hash(value, size);
-  hash_table->values[key] = (char *)malloc(size * sizeof(char));
-  memcpy(hash_table->values[key], value, size);
+  // Add 1 to size to account for the null terminator
+  hash_table->values[key] = (char *)malloc((size + 1) * sizeof(char));
+  memcpy(hash_table->values[key], value, size + 1);
   return key;
 };
 
